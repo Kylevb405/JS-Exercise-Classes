@@ -206,9 +206,9 @@ class Instructor extends Lambdasian {
 
 let objInstructor = new Instructor ({
 
-  name : 'Instructor Kyle Clone',
+  name : 'Instructor Kyle Clone-042',
   age : 32,
-  location : 'Indianapolis 2',
+  location : 'Lambda Secret Test Facilities',
 
   specialty : 'Redux',
   favLanguage : 'Javascript',
@@ -237,10 +237,23 @@ class Student extends Lambdasian  {
   constructor (studentObject){
 
     super(studentObject);
+
     this.previousBackground = studentObject.previousBackground;
     this.className = studentObject.className;
     this.favSubjects = studentObject.favSubjects;
 
+  }
+
+  listSubjects() {
+    return ` Loving ${this.favSubjects.toString()}!`;
+  }
+
+  PRAssignment(subject) {
+    return `${this.name} has submitted a PR for ${subject}`;
+  }
+
+  sprintChallenge(subject) {
+    return `${this.name} has begun sprint challenge on ${subject}`
   }
 
 }
@@ -248,9 +261,12 @@ class Student extends Lambdasian  {
 let objStudent = new Student ({
 
   name : 'Student Kyle Clone',
-  age : 32,
-  location : 'Indianapolis 2',
+  age : 22,
+  location : 'Lambda Secret Test Facilities',
 
+  previousBackground : 'Embryo Clone Center' ,
+  className : 'Test Group 022' ,
+  favSubjects : ['Human Biology', ' Mathematics', ' Physics'] ,
 
 })
 
@@ -267,9 +283,37 @@ let objStudent = new Student ({
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
+class ProjectManager extends Instructor {
+
+  constructor(managerObject) {
+
+    super(managerObject)
+    this.gradClassName = managerObject.gradClassName;
+    this.favInstructor = managerObject.favInstructor;
+
+  }
+
+  standup(slackChannel) {
+    return `${name} announces to ${slackChannel}, @channel standy times!`
+  }
+
 
 }
+
+let objProjectManager = new ProjectManager ({
+  name : 'Project Manager Kyle Clone-07',
+  age : 42,
+  location : 'Lambda Secret Test Facilities',
+
+  specialty : 'Redux',
+  favLanguage : 'Javascript',
+  catchPhrase : "Don't forget the homies",
+
+  gradClassName : 'Test Group 001',
+  favInstructor : 'Instructor Kyle Clone-072',
+
+})
+
 
 /*
   STRETCH PROBLEM (no tests!)
