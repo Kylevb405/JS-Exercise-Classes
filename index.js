@@ -42,7 +42,46 @@ class Airplane {
 
 class Person {
 
+  constructor(object){
+    this.name = object.name;
+    this.age = object.age;
+    this.stomach = object.stomach;
+  }
+  eat(food){
+    if ( this.stomach.length < 10){
+      this.stomach.push(food)
+      console.log(this.stomach);
+    } else if ( this.stomach.length === 10){
+     return 'I gotta goto the bathroom';
+    } else {
+      return 'Food function is not working'
+    }
+  }
+  poop(){
+    if ( this.stomach.length === 10){
+      this.stomach.length = 0
+      console.log(this.stomach);
+      return 'That felt great'
+    } 
+    else if ( this.stomach.length < 10){
+      return 'I could go for some more food'
+    }
+    else{
+      return 'Poop function is not working'
+    }
+  }
+  toString(){
+    return `${this.name}, ${this.age}`;
+  }
 }
+
+let kyleObj = new Person({
+  name : 'Kyle',
+  age : 22,
+  stomach : [],
+});
+
+kyleObj.toString()
 
 /*
   TASK 2
@@ -60,7 +99,37 @@ class Person {
 
 class Car {
 
+  constructor(object) {
+    this.model = object.model;
+    this.milesPerGallon = object.milesPerGallon;
+
+    this.tank = 0;
+    this.odometer = 0;
+  }
+
+  fill(gallons) {
+    this.tank =+ this.tank + gallons;
+    return `${this.tank} Gallons Filled
+    `
+  }
+
+  drive(miles) {
+    if (this.tank > 0) {
+      this.odometer =+ this.odometer + miles;
+      this.tank -= miles / this.milesPerGallon;
+      console.log( ` You've driven ${this.odometer} miles! Gas tank sitting at ${this.tank}` );
+    }
+    else if (this.tank <= 0) {
+      return `I ran out of fuel at ${this.odometer} miles`
+    }
+  }
+
 }
+
+let carObject = new Car ({
+  model : '2006 Koenigsegg CCX',
+  milesPerGallon : 13.84,
+})
 
 /*
   TASK 3
@@ -76,7 +145,29 @@ class Car {
 */
 class Lambdasian {
 
+  constructor (object) {
+
+    this.name = object.name;
+    this.age = object.age;
+    this.location = object.location;
+
+  }
+
+  speak() {
+    return ` Hello my name is ${this.name}, I am from ${this.location} `
+  }
+
 }
+
+let objLambdasian = new Lambdasian ({
+
+  name : 'Lambda Test Subject Kyle-01',
+  age : 69,
+  location : 'Lambda Secret Test Facilities',
+
+})
+
+
 
 /*
   TASK 4
@@ -92,9 +183,39 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
+class Instructor extends Lambdasian {
+
+  constructor (instructObject) {
+
+    super(instructObject);
+    this.specialty = instructObject.specialty;
+    this.favLanguage = instructObject.favLanguage;
+    this.catchPhrase = instructObject.catchPhrase;
+
+  }
+
+  demo(subject){
+    return `Today we are learning about ${subject}`
+  }
+
+  grade(student, subject) {
+    return ` ${student.name} receives a perfect score on ${subject}`
+  }
 
 }
+
+let objInstructor = new Instructor ({
+
+  name : 'Instructor Kyle Clone',
+  age : 32,
+  location : 'Indianapolis 2',
+
+  specialty : 'Redux',
+  favLanguage : 'Javascript',
+  catchPhrase : "Don't forget the homies",
+
+})
+
 
 /*
   TASK 5
@@ -111,9 +232,27 @@ class Instructor {
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
+class Student extends Lambdasian  {
+
+  constructor (studentObject){
+
+    super(studentObject);
+    this.previousBackground = studentObject.previousBackground;
+    this.className = studentObject.className;
+    this.favSubjects = studentObject.favSubjects;
+
+  }
 
 }
+
+let objStudent = new Student ({
+
+  name : 'Student Kyle Clone',
+  age : 32,
+  location : 'Indianapolis 2',
+
+
+})
 
 /*
   TASK 6
