@@ -81,6 +81,8 @@ let kyleObj = new Person({
   stomach : [],
 });
 
+kyleObj.eat('Pizza')
+kyleObj.poop()
 kyleObj.toString()
 
 /*
@@ -109,13 +111,12 @@ class Car {
 
   fill(gallons) {
     this.tank =+ this.tank + gallons;
-    return `${this.tank} Gallons Filled
-    `
+    return `${this.tank} Gallons Filled`
   }
 
   drive(miles) {
     if (this.tank > 0) {
-      this.odometer =+ this.odometer + miles;
+      this.odometer += this.odometer + miles;
       this.tank -= miles / this.milesPerGallon;
       console.log( ` You've driven ${this.odometer} miles! Gas tank sitting at ${this.tank}` );
     }
@@ -123,13 +124,15 @@ class Car {
       return `I ran out of fuel at ${this.odometer} miles`
     }
   }
-
 }
 
 let carObject = new Car ({
   model : '2006 Koenigsegg CCX',
   milesPerGallon : 13.84,
 })
+
+carObject.fill(10)
+carObject.drive(13.84)
 
 /*
   TASK 3
@@ -166,6 +169,8 @@ let objLambdasian = new Lambdasian ({
   location : 'Lambda Secret Test Facilities',
 
 })
+
+objLambdasian.speak()
 
 
 
@@ -215,6 +220,9 @@ let objInstructor = new Instructor ({
   catchPhrase : "Don't forget the homies",
 
 })
+
+objInstructor.demo('Biology')
+objInstructor.grade(objLambdasian, 'Biology')
 
 
 /*
@@ -270,6 +278,12 @@ let objStudent = new Student ({
 
 })
 
+objStudent.listSubjects()
+objStudent.PRAssignment('Biology')
+objStudent.sprintChallenge('Biology')
+
+
+
 /*
   TASK 6
     - Write a ProjectManager class extending Instructor.
@@ -294,9 +308,12 @@ class ProjectManager extends Instructor {
   }
 
   standup(slackChannel) {
-    return `${name} announces to ${slackChannel}, @channel standy times!`
+    return `${this.name} announces to ${slackChannel}, @channel standy times!`
   }
 
+  debugCode(student, subject) {
+    return `${this.name} debugs ${student.name}'s code on ${subject}`
+  }
 
 }
 
@@ -313,6 +330,9 @@ let objProjectManager = new ProjectManager ({
   favInstructor : 'Instructor Kyle Clone-072',
 
 })
+
+objProjectManager.standup('Test Room-043')
+objProjectManager.debugCode(objStudent, 'Biology')
 
 
 /*
